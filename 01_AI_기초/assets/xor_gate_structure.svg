@@ -1,0 +1,85 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .title { font: 700 42px sans-serif; fill: #111; }
+    .subtitle { font: 400 20px sans-serif; fill: #444; }
+    .head { fill: #5b9bd5; }
+    .cell1 { fill: #dbe5f1; }
+    .cell2 { fill: #edf3fb; }
+    .txt { font: 400 34px sans-serif; fill: #111; text-anchor: middle; dominant-baseline: middle; }
+    .label { font: 700 24px sans-serif; fill: #222; }
+    .small { font: 400 18px sans-serif; fill: #333; }
+    .dash { fill: none; stroke: #d62728; stroke-width: 5; stroke-dasharray: 12 8; }
+    .arrow { stroke: #111; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#111" />
+    </marker>
+  </defs>
+
+  <text x="700" y="60" class="title" text-anchor="middle">XOR(x1, x2) = AND(NAND(x1, x2), OR(x1, x2))</text>
+  <text x="700" y="95" class="subtitle" text-anchor="middle">A single perceptron cannot solve XOR with one linear boundary, so we combine intermediate gates.</text>
+
+  <g transform="translate(30,170)">
+    <text x="150" y="-30" class="title" text-anchor="middle">XOR Gate</text>
+    <rect x="0" y="0" width="110" height="70" class="head" /><rect x="110" y="0" width="110" height="70" class="head" /><rect x="220" y="0" width="110" height="70" class="head" />
+    <text x="55" y="35" class="txt">x1</text><text x="165" y="35" class="txt">x2</text><text x="275" y="35" class="txt">y</text>
+    <rect x="0" y="70" width="110" height="70" class="cell1" /><rect x="110" y="70" width="110" height="70" class="cell1" /><rect x="220" y="70" width="110" height="70" class="cell1" />
+    <rect x="0" y="140" width="110" height="70" class="cell2" /><rect x="110" y="140" width="110" height="70" class="cell2" /><rect x="220" y="140" width="110" height="70" class="cell2" />
+    <rect x="0" y="210" width="110" height="70" class="cell1" /><rect x="110" y="210" width="110" height="70" class="cell1" /><rect x="220" y="210" width="110" height="70" class="cell1" />
+    <rect x="0" y="280" width="110" height="70" class="cell2" /><rect x="110" y="280" width="110" height="70" class="cell2" /><rect x="220" y="280" width="110" height="70" class="cell2" />
+    <text x="55" y="105" class="txt">0</text><text x="165" y="105" class="txt">0</text><text x="275" y="105" class="txt">0</text>
+    <text x="55" y="175" class="txt">0</text><text x="165" y="175" class="txt">1</text><text x="275" y="175" class="txt">1</text>
+    <text x="55" y="245" class="txt">1</text><text x="165" y="245" class="txt">0</text><text x="275" y="245" class="txt">1</text>
+    <text x="55" y="315" class="txt">1</text><text x="165" y="315" class="txt">1</text><text x="275" y="315" class="txt">0</text>
+    <text x="165" y="390" class="small" text-anchor="middle">Target output: only different inputs become 1</text>
+  </g>
+
+  <g transform="translate(500,170)">
+    <text x="150" y="-30" class="title" text-anchor="middle">OR Gate</text>
+    <rect x="0" y="0" width="110" height="70" class="head" /><rect x="110" y="0" width="110" height="70" class="head" /><rect x="220" y="0" width="110" height="70" class="head" />
+    <text x="55" y="35" class="txt">x1</text><text x="165" y="35" class="txt">x2</text><text x="275" y="35" class="txt">y</text>
+    <rect x="0" y="70" width="110" height="70" class="cell1" /><rect x="110" y="70" width="110" height="70" class="cell1" /><rect x="220" y="70" width="110" height="70" class="cell1" />
+    <rect x="0" y="140" width="110" height="70" class="cell2" /><rect x="110" y="140" width="110" height="70" class="cell2" /><rect x="220" y="140" width="110" height="70" class="cell2" />
+    <rect x="0" y="210" width="110" height="70" class="cell1" /><rect x="110" y="210" width="110" height="70" class="cell1" /><rect x="220" y="210" width="110" height="70" class="cell1" />
+    <rect x="0" y="280" width="110" height="70" class="cell2" /><rect x="110" y="280" width="110" height="70" class="cell2" /><rect x="220" y="280" width="110" height="70" class="cell2" />
+    <text x="55" y="105" class="txt">0</text><text x="165" y="105" class="txt">0</text><text x="275" y="105" class="txt">0</text>
+    <text x="55" y="175" class="txt">0</text><text x="165" y="175" class="txt">1</text><text x="275" y="175" class="txt">1</text>
+    <text x="55" y="245" class="txt">1</text><text x="165" y="245" class="txt">0</text><text x="275" y="245" class="txt">1</text>
+    <text x="55" y="315" class="txt">1</text><text x="165" y="315" class="txt">1</text><text x="275" y="315" class="txt">1</text>
+    <rect x="216" y="-6" width="118" height="362" class="dash" />
+    <text x="165" y="390" class="small" text-anchor="middle">OR keeps every case where at least one input is 1</text>
+  </g>
+
+  <g transform="translate(500,560)">
+    <text x="150" y="-30" class="title" text-anchor="middle">NAND Gate</text>
+    <rect x="0" y="0" width="110" height="70" class="head" /><rect x="110" y="0" width="110" height="70" class="head" /><rect x="220" y="0" width="110" height="70" class="head" />
+    <text x="55" y="35" class="txt">x1</text><text x="165" y="35" class="txt">x2</text><text x="275" y="35" class="txt">y</text>
+    <rect x="0" y="70" width="110" height="70" class="cell1" /><rect x="110" y="70" width="110" height="70" class="cell1" /><rect x="220" y="70" width="110" height="70" class="cell1" />
+    <rect x="0" y="140" width="110" height="70" class="cell2" /><rect x="110" y="140" width="110" height="70" class="cell2" /><rect x="220" y="140" width="110" height="70" class="cell2" />
+    <rect x="0" y="210" width="110" height="70" class="cell1" /><rect x="110" y="210" width="110" height="70" class="cell1" /><rect x="220" y="210" width="110" height="70" class="cell1" />
+    <rect x="0" y="280" width="110" height="70" class="cell2" /><rect x="110" y="280" width="110" height="70" class="cell2" /><rect x="220" y="280" width="110" height="70" class="cell2" />
+    <text x="55" y="105" class="txt">0</text><text x="165" y="105" class="txt">0</text><text x="275" y="105" class="txt">1</text>
+    <text x="55" y="175" class="txt">0</text><text x="165" y="175" class="txt">1</text><text x="275" y="175" class="txt">1</text>
+    <text x="55" y="245" class="txt">1</text><text x="165" y="245" class="txt">0</text><text x="275" y="245" class="txt">1</text>
+    <text x="55" y="315" class="txt">1</text><text x="165" y="315" class="txt">1</text><text x="275" y="315" class="txt">0</text>
+    <rect x="216" y="-6" width="118" height="362" class="dash" />
+    <text x="165" y="390" class="small" text-anchor="middle">NAND removes the (1, 1) case by flipping AND</text>
+  </g>
+
+  <g transform="translate(1010,360)">
+    <text x="150" y="-30" class="title" text-anchor="middle">AND Gate</text>
+    <rect x="0" y="0" width="110" height="70" class="head" /><rect x="110" y="0" width="110" height="70" class="head" /><rect x="220" y="0" width="110" height="70" class="head" />
+    <text x="55" y="35" class="txt">x1</text><text x="165" y="35" class="txt">x2</text><text x="275" y="35" class="txt">y</text>
+    <rect x="0" y="70" width="110" height="70" class="cell1" /><rect x="110" y="70" width="110" height="70" class="cell1" /><rect x="220" y="70" width="110" height="70" class="cell1" />
+    <rect x="0" y="140" width="110" height="70" class="cell2" /><rect x="110" y="140" width="110" height="70" class="cell2" /><rect x="220" y="140" width="110" height="70" class="cell2" />
+    <rect x="0" y="210" width="110" height="70" class="cell1" /><rect x="110" y="210" width="110" height="70" class="cell1" /><rect x="220" y="210" width="110" height="70" class="cell1" />
+    <text x="55" y="105" class="txt">0</text><text x="165" y="105" class="txt">1</text><text x="275" y="105" class="txt">0</text>
+    <text x="55" y="175" class="txt">1</text><text x="165" y="175" class="txt">0</text><text x="275" y="175" class="txt">0</text>
+    <text x="55" y="245" class="txt">1</text><text x="165" y="245" class="txt">1</text><text x="275" y="245" class="txt">1</text>
+    <text x="165" y="330" class="small" text-anchor="middle">Only the overlap between OR and NAND survives</text>
+  </g>
+
+  <path d="M 830 345 L 1010 430" class="arrow" />
+  <path d="M 830 735 L 1010 510" class="arrow" />
+</svg>
