@@ -15,6 +15,7 @@ llm-study/
 │   ├── perceptron.ipynb
 │   └── embedding_token.ipynb
 ├── 02_LangChain/
+│   ├── langchain.md
 │   ├── lcel_basic.ipynb
 │   ├── tool_calling.ipynb
 │   └── agent.ipynb
@@ -46,6 +47,7 @@ llm-study/
 - 토크나이저 동작 방식 학습
 
 ### 2. LangChain
+- LangChain 개념 문서 작성
 - LCEL 기반 체인 구성
 - Tool Calling 실습
 - Agent 자동화 흐름 구현
