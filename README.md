@@ -11,6 +11,7 @@ llm-study/
 ├── 01_AI_기초/
 │   ├── perceptron.md
 │   ├── perceptron_core_concepts.md
+│   ├── llm.md
 │   ├── perceptron.ipynb
 │   └── embedding_token.ipynb
 ├── 02_LangChain/
@@ -39,6 +40,7 @@ llm-study/
 ### 1. AI 기초
 - 퍼셉트론 개념 정리 문서 작성
 - 퍼셉트론 핵심 구성 요소 정리
+- LLM 개념 정리 문서 작성
 - 퍼셉트론으로 AND / OR 게이트 구현
 - 임베딩 개념 이해 및 실습
 - 토크나이저 동작 방식 학습
