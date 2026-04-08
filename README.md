@@ -20,6 +20,7 @@ llm-study/
 │   ├── tool_calling.ipynb
 │   └── agent.ipynb
 ├── 03_RAG/
+│   ├── notion_troubleshooting_search.md
 │   ├── vector_db_basic.ipynb
 │   ├── notion_rag.ipynb
 │   └── chunking_improved.ipynb
@@ -53,6 +54,7 @@ llm-study/
 - Agent 자동화 흐름 구현
 
 ### 3. RAG
+- 노션 트러블슈팅 검색기 문서 작성
 - 벡터 DB 기초 실습
 - 노션 트러블슈팅 문서 기반 RAG 구현
 - 청킹 방식 개선 및 검색 품질 비교
