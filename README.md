@@ -8,18 +8,35 @@
 
 ### 노션 트러블슈팅 검색기
 
-이 저장소에서 가장 구현 비중이 큰 프로젝트는 `03_RAG`의 노션 트러블슈팅 검색기입니다.
+RAG를 활용해 노션 트러블슈팅 검색기를 구현했습니다.
 
-- 프로젝트 문서: [03_RAG/notion_troubleshooting_search/notion_troubleshooting_search.md](/Users/eunchae/repository/skax/03_RAG/notion_troubleshooting_search/notion_troubleshooting_search.md)
-- 실행 노트북: [03_RAG/notion_troubleshooting_search/llm_노션_트러블슈팅_검색기.ipynb](/Users/eunchae/repository/skax/03_RAG/notion_troubleshooting_search/llm_노션_트러블슈팅_검색기.ipynb)
-- 샘플 데이터: [03_RAG/notion_troubleshooting_search/dummy_data.zip](/Users/eunchae/repository/skax/03_RAG/notion_troubleshooting_search/dummy_data.zip)
+- 프로젝트 문서: [03_RAG/notion_troubleshooting_search/notion_troubleshooting_search.md](03_RAG/notion_troubleshooting_search/notion_troubleshooting_search.md)
+- 실행 노트북: [03_RAG/notion_troubleshooting_search/llm_노션_트러블슈팅_검색기.ipynb](03_RAG/notion_troubleshooting_search/llm_노션_트러블슈팅_검색기.ipynb)
+- 샘플 데이터: [03_RAG/notion_troubleshooting_search/dummy_data.zip](03_RAG/notion_troubleshooting_search/dummy_data.zip)
 
-구현한 핵심 흐름:
+**기술 스택**
+- Python
+- LangChain
+- OpenAI Embeddings / ChatOpenAI
+- Chroma
+- Gradio
+
+**구현한 핵심 흐름**
 - Notion 문서를 Markdown으로 읽어 벡터 DB에 적재
 - Chroma 기반 문서 검색과 Q&A 응답 연결
 - Gradio 2단 레이아웃으로 문서 목록, 전체 문서, 요약, Q&A 제공
 - 검색창과 Q&A 입력을 분리해 키워드 검색과 자연어 질문을 각각 다르게 처리
 - 검색 품질 개선을 위해 키워드 매칭, 별칭 확장, 하이브리드 검색 방식 적용
+
+**프로젝트 구조**
+- `03_RAG/notion_troubleshooting_search/llm_노션_트러블슈팅_검색기.ipynb`: 검색기 구현 및 Gradio UI
+- `03_RAG/notion_troubleshooting_search/notion_troubleshooting_search.md`: 구현 내용과 적용 개념 정리
+- `03_RAG/notion_troubleshooting_search/dummy_data.zip`: 실습용 트러블슈팅 문서 데이터
+
+**배운 점 / 어려웠던 점**
+- 검색창과 Q&A 입력은 목적이 다르기 때문에, 같은 검색 로직으로 처리하면 품질이 쉽게 떨어진다는 점을 체감했습니다.
+- 벡터 검색만으로는 `jenkins`처럼 명확한 키워드에서 관련 없는 문서가 섞여 들어올 수 있어, 키워드 매칭과 별칭 확장을 함께 쓰는 하이브리드 방식이 더 안정적이었습니다.
+- Gradio 레이아웃을 2단 구조로 만들면서 스크롤 영역, 요약 박스 노출 조건, 문서 선택 시 우측 패널 갱신 같은 UI 상태 관리에서 시행착오가 있었습니다.
 
 ## Repository Structure
 
