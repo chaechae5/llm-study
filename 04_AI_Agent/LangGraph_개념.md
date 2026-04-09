@@ -608,6 +608,84 @@ model = ChatAnthropic(model="claude-sonnet-4-20250514")
 model_with_tools = model.bind_tools(tools)
 ```
 
+### tool_calls — LLM이 도구 호출을 담는 내장 속성
+
+🤔 **`tool_calls`는 내가 선언한 변수야?**
+
+아니. `AIMessage` 객체에 **내장된 속성(예약 필드)** 임. `bind_tools`로 도구를 등록한 LLM이 응답할 때, 도구가 필요하다고 판단하면 자동으로 채워줌.
+
+```python
+llm_with_tools = llm.bind_tools([add, multiply])
+response = llm_with_tools.invoke("1 더하기 2는?")
+
+# AIMessage 안에 자동으로 생김
+print(response.tool_calls)
+# [{"name": "add", "args": {"a": 1, "b": 2}, "id": "abc123"}]
+```
+
+**`AIMessage` 구조:**
+
+```python
+AIMessage(
+    content="",              # LLM 텍스트 응답
+    tool_calls=[...],        # ← 내장 속성 (도구 호출 시 자동으로 채워짐)
+    invalid_tool_calls=[],   # 잘못된 도구 호출
+    usage_metadata={...}     # 토큰 사용량
+)
+```
+
+**도구 호출 없을 때 vs 있을 때:**
+
+```python
+# 도구 호출 없을 때
+AIMessage(content="안녕하세요!", tool_calls=[])  # 빈 리스트
+
+# 도구 호출 있을 때
+AIMessage(content="", tool_calls=[
+    {"name": "add",      "args": {"a": 1, "b": 2}, "id": "abc"},
+    {"name": "multiply", "args": {"a": 3, "b": 4}, "id": "def"},
+])
+```
+
+> `tool_call_id`는 LLM이 여러 도구를 동시에 호출할 때 어떤 결과가 어떤 호출의 것인지 매칭하는 데 쓰임.
+
+**`should_continue`에서 이렇게 활용:**
+
+```python
+def should_continue(state):
+    if state["messages"][-1].tool_calls:  # 비어있으면 False → END
+        return "tool_node"
+    return END
+```
+
+**직접 구현한 `tool_node`에서 활용:**
+
+```python
+def tool_node(state: dict):
+    """도구 호출 수행"""
+    result = []
+    for tool_call in state["messages"][-1].tool_calls:
+        tool = tools_by_name[tool_call["name"]]          # 내가 정의한 툴에서 찾기
+        observation = tool.invoke(tool_call["args"])      # 실제 실행
+        result.append(ToolMessage(
+            content=observation,          # 실행 결과를 LLM에게 전달
+            tool_call_id=tool_call["id"]  # 어떤 호출의 결과인지 매칭
+        ))
+    return {"messages": result}
+```
+
+**흐름 정리:**
+
+```
+내가 정의한 툴: [add, multiply, search, ...]
+                    ↓ bind_tools로 등록
+LLM이 판단:    "add랑 multiply 써야겠다" → tool_calls에 자동으로 저장
+                    ↓
+tool_node:     tool_calls 순회하며 실제 실행 → ToolMessage로 결과 반환
+                    ↓
+LLM:           결과 보고 최종 답변 생성
+```
+
 **전체 ReAct 루프 예시:**
 
 ```python
