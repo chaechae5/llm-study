@@ -1,0 +1,33 @@
+site_name: LLM Study Docs
+site_description: Perceptron to RAG and AI Agent study notes
+site_url: ""
+repo_name: chaechae5/llm-study
+repo_url: https://github.com/chaechae5/llm-study
+docs_dir: docs
+theme:
+  name: mkdocs
+extra_css:
+  - stylesheets/extra.css
+markdown_extensions:
+  - tables
+  - fenced_code
+  - toc:
+      permalink: true
+exclude_docs: |
+  .git/**
+  .github/**
+  .venv/**
+  __pycache__/**
+nav:
+  - Home: index.md
+  - AI 기초:
+      - LLM 개념: 01_AI_기초/llm.md
+      - 퍼셉트론: 01_AI_기초/perceptron.md
+      - 퍼셉트론 핵심 개념: 01_AI_기초/perceptron_core_concepts.md
+  - LangChain:
+      - LangChain 개념: 02_LangChain/langchain.md
+  - RAG:
+      - 노션 트러블슈팅 검색기: 03_RAG/notion_troubleshooting_search/notion_troubleshooting_search.md
+  - AI Agent:
+      - AI Agent 개념: 04_AI_Agent/AI_Agent_개념.md
+      - LangGraph 개념: 04_AI_Agent/LangGraph_개념.md

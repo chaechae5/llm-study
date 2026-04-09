@@ -20,3 +20,9 @@ data.zip
 # Local RAG artifacts
 notion_docs/
 notion_chroma2/
+dummy_data/
+03_RAG/notion_troubleshooting_search/dummy_data/
+03_RAG/notion_troubleshooting_search/notion_chroma/
+
+# MkDocs build output
+site/
