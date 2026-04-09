@@ -1,4 +1,4 @@
-# Perceptron to RAG 🤖
+# Perceptron to AI Agent 🤖
 
 퍼셉트론부터 RAG, 그리고 AI Agent까지 LLM 핵심 개념을 직접 구현하며 학습한 내용을 정리하는 저장소입니다.
 
