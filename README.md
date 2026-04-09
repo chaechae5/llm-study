@@ -111,20 +111,28 @@ llm-study/
 - Gradio
 - LangGraph
 
+## 문서 사이트
+
+레포의 `md` 파일들을 웹 문서처럼 탐색할 수 있도록 `MkDocs` 설정을 추가했습니다.
+
+- 설정 파일: [mkdocs.yml](/Users/eunchae/repository/skax/mkdocs.yml)
+- 홈 문서: `README.md`
+- 문서 메뉴: `01_AI_기초`, `02_LangChain`, `03_RAG`, `04_AI_Agent`
+
+로컬에서 실행:
+
+```bash
+pip install mkdocs
+mkdocs serve
+```
+
+정적 사이트 빌드:
+
+```bash
+mkdocs build
+```
+
 ## 배운 점
 - 청킹 방식이 RAG 품질에 큰 영향을 준다.
 - Tool Calling은 LLM의 판단과 코드 실행을 연결하는 구조다.
 - 임베딩은 텍스트 의미를 숫자 벡터로 압축하는 핵심 개념이다.
-
-## 커밋 예시
-- `feat: 퍼셉트론 AND 게이트 구현`
-- `feat: LCEL 기본 체인 구성`
-- `feat: 주식 조회 Tool Calling 구현`
-- `feat: 노션 RAG 기본 버전`
-- `fix: 청킹 문제 발견 및 개선`
-- `docs: README 업데이트`
-
-## 진행 방식
-- 각 주제별로 `ipynb` 파일을 하나씩 추가
-- 실습 내용은 코드와 함께 핵심 개념을 바로 이해할 수 있도록 정리
-- 필요하면 이후 `requirements.txt` 또는 실행 가이드도 추가 예정
